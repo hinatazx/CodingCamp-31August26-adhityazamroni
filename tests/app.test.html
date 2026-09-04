@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List Dashboard — Property-Based Tests</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #1a1d23;
+        color: #e8eaf0;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      h1 { margin-bottom: 1rem; font-size: 1.5rem; }
+      #results { margin-top: 1rem; }
+      .result {
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.375rem;
+        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+        font-family: monospace;
+      }
+      .pass  { background: rgba(99,192,116,0.15); color: #63c074; }
+      .fail  { background: rgba(242,108,108,0.15); color: #f26c6c; }
+      .info  { background: rgba(92,124,250,0.12);  color: #7c9bff; }
+      #summary { margin-top: 1.5rem; font-size: 1.1rem; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List Dashboard — Property-Based Tests</h1>
+    <p>Open the browser console for detailed output. Results are also shown below.</p>
+    <div id="results"></div>
+    <div id="summary"></div>
+
+    <!-- fast-check (test-only CDN; never loaded by the main app) -->
+    <script src="https://cdn.jsdelivr.net/npm/fast-check/lib/bundle/fast-check.js"></script>
+
+    <!-- Load the application under test.
+         The script bootstraps `App` on the global scope.
+         DOMContentLoaded will fire after this page's DOM is ready,
+         but we access App.* directly in tests without triggering init(). -->
+    <script src="../js/app.js"></script>
+
+    <!-- Test harness -->
+    <script>
+      'use strict';
+
+      /* ----------------------------------------------------------
+         Minimal self-running test harness
+         ---------------------------------------------------------- */
+      const harness = (function () {
+        let passed = 0;
+        let failed = 0;
+        const resultsEl = document.getElementById('results');
+
+        function _log(cssClass, label, message) {
+          const div = document.createElement('div');
+          div.className = 'result ' + cssClass;
+          div.textContent = label + ': ' + message;
+          resultsEl.appendChild(div);
+        }
+
+        /** Run a synchronous property-based test via fast-check. */
+        function property(name, fcProperty) {
+          try {
+            fc.assert(fcProperty, { numRuns: 100 });
+            passed++;
+            _log('pass', 'PASS', name);
+            console.log('%c[PASS]', 'color: #63c074', name);
+          } catch (err) {
+            failed++;
+            _log('fail', 'FAIL', name + ' — ' + err.message);
+            console.error('%c[FAIL]', 'color: #f26c6c', name, err);
+          }
+        }
+
+        /** Run a simple example-based assertion. */
+        function test(name, fn) {
+          try {
+            fn();
+            passed++;
+            _log('pass', 'PASS', name);
+            console.log('%c[PASS]', 'color: #63c074', name);
+          } catch (err) {
+            failed++;
+            _log('fail', 'FAIL', name + ' — ' + err.message);
+            console.error('%c[FAIL]', 'color: #f26c6c', name, err);
+          }
+        }
+
+        /** Print the final summary. */
+        function summary() {
+          const total = passed + failed;
+          const text  = 'Results: ' + passed + '/' + total + ' passed' +
+                        (failed > 0 ? ' (' + failed + ' failed)' : ' ✓');
+          const summaryEl = document.getElementById('summary');
+          summaryEl.textContent = text;
+          summaryEl.style.color = failed > 0 ? '#f26c6c' : '#63c074';
+          console.log(
+            '%c' + text,
+            'font-weight:bold; color:' + (failed > 0 ? '#f26c6c' : '#63c074')
+          );
+        }
+
+        /** Simple deep equality helper. */
+        function deepEqual(a, b) {
+          return JSON.stringify(a) === JSON.stringify(b);
+        }
+
+        function assert(condition, message) {
+          if (!condition) throw new Error(message || 'Assertion failed');
+        }
+
+        return { property, test, summary, deepEqual, assert };
+      }());
+
+      /* ----------------------------------------------------------
+         Arbitraries (generators for test data)
+         ---------------------------------------------------------- */
+
+      // Non-empty, non-whitespace-only string (trimmed length ≥ 1)
+      const arbitraryNonBlankString = fc.string({ minLength: 1 }).filter(
+        function (s) { return s.trim().length > 0; }
+      );
+
+      // Valid Task object
+      const arbitraryTask = fc.record({
+        id:        fc.uuid(),
+        title:     arbitraryNonBlankString,
+        completed: fc.boolean(),
+      });
+
+      // Valid Link object
+      const arbitraryLink = fc.record({
+        id:    fc.uuid(),
+        label: arbitraryNonBlankString,
+        url:   fc.oneof(
+          fc.string({ minLength: 1 }).map(function (s) { return 'http://' + s; }),
+          fc.string({ minLength: 1 }).map(function (s) { return 'https://' + s; })
+        ),
+      });
+
+      /* ----------------------------------------------------------
+         Placeholder tests — properties will be added in later tasks.
+         See tasks 2.2–2.4, 3.2, 5.3–5.4, 7.3–7.5, 8.3–8.5.
+         ---------------------------------------------------------- */
+
+      // Smoke test: fast-check is loaded
+      harness.test('fast-check is available', function () {
+        harness.assert(typeof fc !== 'undefined', 'fc is not defined');
+        harness.assert(typeof fc.assert === 'function', 'fc.assert is not a function');
+      });
+
+      // Smoke test: App namespace is available
+      harness.test('App namespace is defined', function () {
+        harness.assert(typeof App !== 'undefined', 'App is not defined');
+        harness.assert(typeof App.StorageService   === 'object',   'App.StorageService is missing');
+        harness.assert(typeof App.DateUtils        === 'object',   'App.DateUtils is missing');
+        harness.assert(typeof App.GreetingWidget   === 'object',   'App.GreetingWidget is missing');
+        harness.assert(typeof App.FocusTimerWidget === 'object',   'App.FocusTimerWidget is missing');
+        harness.assert(typeof App.TodoListWidget   === 'object',   'App.TodoListWidget is missing');
+        harness.assert(typeof App.QuickLinksWidget === 'object',   'App.QuickLinksWidget is missing');
+      });
+
+      // Smoke test: StorageService methods exist
+      harness.test('StorageService exposes load / save / remove', function () {
+        harness.assert(typeof App.StorageService.load   === 'function', 'load missing');
+        harness.assert(typeof App.StorageService.save   === 'function', 'save missing');
+        harness.assert(typeof App.StorageService.remove === 'function', 'remove missing');
+      });
+
+      // Smoke test: DateUtils methods exist
+      harness.test('DateUtils exposes formatTime / formatDate / getTimeOfDay / isValidDate', function () {
+        harness.assert(typeof App.DateUtils.formatTime   === 'function', 'formatTime missing');
+        harness.assert(typeof App.DateUtils.formatDate   === 'function', 'formatDate missing');
+        harness.assert(typeof App.DateUtils.getTimeOfDay === 'function', 'getTimeOfDay missing');
+        harness.assert(typeof App.DateUtils.isValidDate  === 'function', 'isValidDate missing');
+      });
+
+      /* ----------------------------------------------------------
+         Property tests are added per spec task:
+           Task 2.2  → Property 1  (Task persistence round-trip)
+           Task 2.3  → Property 2  (Link persistence round-trip)
+           Task 2.4  → Property 10 (Corrupted localStorage)
+           Task 3.2  → Property 9  (Greeting time-of-day mapping)
+           Task 5.3  → Property 11 (Timer decrement bounds)
+           Task 5.4  → Property 12 (Timer reset idempotency)
+           Task 7.3  → Property 3  (Task whitespace-title rejection)
+           Task 7.4  → Property 4  (Task edit whitespace rejection)
+           Task 7.5  → Property 5  (Task completion toggle inverse)
+           Task 8.3  → Property 6  (Link URL protocol rejection)
+           Task 8.4  → Property 7  (Link whitespace field rejection)
+           Task 8.5  → Property 8  (Link count cap enforcement)
+         ---------------------------------------------------------- */
+
+      /* ----------------------------------------------------------
+         Print summary
+         ---------------------------------------------------------- */
+      harness.summary();
+    </script>
+  </body>
+</html>

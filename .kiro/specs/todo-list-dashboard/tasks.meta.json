@@ -1,0 +1,222 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Scaffold project structure and HTML skeleton": [
+      {
+        "executionId": "1426b6a7-617a-4318-9888-39b02e553a95",
+        "chatSessionId": "sess_84baab84-0ff5-43fc-b34d-2155ad0ec129",
+        "timestamp": 1788526432961
+      }
+    ],
+    "2.1 Implement `StorageService.load(key)`, `StorageService.save(key, data)`, and `StorageService.remove(key)` inside `js/app.js`": [
+      {
+        "executionId": "c2cfb9d7-4777-4862-ab9d-82c8a7318229",
+        "chatSessionId": "sess_f9b13575-46ba-41b5-ba74-b50cf89b00f5",
+        "timestamp": 1788526463976
+      },
+      {
+        "executionId": "c2cfb9d7-4777-4862-ab9d-82c8a7318229",
+        "chatSessionId": "sess_f9b13575-46ba-41b5-ba74-b50cf89b00f5",
+        "timestamp": 1788526474693
+      }
+    ],
+    "2. Implement `StorageService`": [
+      {
+        "executionId": "c2cfb9d7-4777-4862-ab9d-82c8a7318229",
+        "chatSessionId": "sess_f9b13575-46ba-41b5-ba74-b50cf89b00f5",
+        "timestamp": 1788526474736
+      }
+    ],
+    "3.1 Implement `DateUtils.formatTime(date)`, `DateUtils.formatDate(date)`, `DateUtils.getTimeOfDay(date)`, and `DateUtils.isValidDate(date)` inside `js/app.js`": [
+      {
+        "executionId": "8db4b111-1422-4eec-ba15-688a81b3d33d",
+        "chatSessionId": "sess_2085a959-b13f-4056-99e0-8945bda9d9f6",
+        "timestamp": 1788526500097
+      },
+      {
+        "executionId": "8db4b111-1422-4eec-ba15-688a81b3d33d",
+        "chatSessionId": "sess_2085a959-b13f-4056-99e0-8945bda9d9f6",
+        "timestamp": 1788526533527
+      }
+    ],
+    "3. Implement `DateUtils`": [
+      {
+        "executionId": "8db4b111-1422-4eec-ba15-688a81b3d33d",
+        "chatSessionId": "sess_2085a959-b13f-4056-99e0-8945bda9d9f6",
+        "timestamp": 1788526533599
+      }
+    ],
+    "4.1 Implement `GreetingWidget.init()` and `GreetingWidget.render()` inside `js/app.js`": [
+      {
+        "executionId": "e5bfec27-ce39-4411-bb4d-380362780ecf",
+        "chatSessionId": "sess_89032a05-bbd6-40b7-bc9c-95e129b49341",
+        "timestamp": 1788526543205
+      },
+      {
+        "executionId": "e5bfec27-ce39-4411-bb4d-380362780ecf",
+        "chatSessionId": "sess_89032a05-bbd6-40b7-bc9c-95e129b49341",
+        "timestamp": 1788526600024
+      }
+    ],
+    "4. Implement `GreetingWidget`": [
+      {
+        "executionId": "e5bfec27-ce39-4411-bb4d-380362780ecf",
+        "chatSessionId": "sess_89032a05-bbd6-40b7-bc9c-95e129b49341",
+        "timestamp": 1788526600101
+      }
+    ],
+    "5.1 Implement the in-memory state object `{ remaining: 1500, running: false, intervalId: null }` and `FocusTimerWidget.render()` inside `js/app.js`": [
+      {
+        "executionId": "d7624232-e232-48b6-b292-dede5197141e",
+        "chatSessionId": "sess_fc8cbd00-3e2b-40cd-a01d-61f9248c28c5",
+        "timestamp": 1788526631092
+      },
+      {
+        "executionId": "d7624232-e232-48b6-b292-dede5197141e",
+        "chatSessionId": "sess_fc8cbd00-3e2b-40cd-a01d-61f9248c28c5",
+        "timestamp": 1788526670803
+      }
+    ],
+    "5.2 Implement `FocusTimerWidget.tick()`, `FocusTimerWidget.start()`, `FocusTimerWidget.stop()`, and `FocusTimerWidget.reset()`": [
+      {
+        "executionId": "f9885343-37bf-40b6-8a59-c763dba52e05",
+        "chatSessionId": "sess_5c854227-2dfe-45c7-a4b0-df97278cdb84",
+        "timestamp": 1788526697943
+      },
+      {
+        "executionId": "f9885343-37bf-40b6-8a59-c763dba52e05",
+        "chatSessionId": "sess_5c854227-2dfe-45c7-a4b0-df97278cdb84",
+        "timestamp": 1788526742368
+      }
+    ],
+    "5. Implement `FocusTimerWidget`": [
+      {
+        "executionId": "f9885343-37bf-40b6-8a59-c763dba52e05",
+        "chatSessionId": "sess_5c854227-2dfe-45c7-a4b0-df97278cdb84",
+        "timestamp": 1788526742486
+      }
+    ],
+    "6. Checkpoint — storage, utilities, and timer": [
+      {
+        "executionId": "27aea6bf-ae59-4e71-a9dd-a7192d18273b",
+        "chatSessionId": "sess_ba3147c6-0551-4831-9f26-287e30ba1528",
+        "timestamp": 1788527029692
+      },
+      {
+        "executionId": "27aea6bf-ae59-4e71-a9dd-a7192d18273b",
+        "chatSessionId": "sess_ba3147c6-0551-4831-9f26-287e30ba1528",
+        "timestamp": 1788527041819
+      }
+    ],
+    "7.1 Implement `TodoListWidget.init()`, `TodoListWidget.persist()`, and `TodoListWidget.renderList()` inside `js/app.js`": [
+      {
+        "executionId": "2b50fb63-55e4-427c-afa7-9a39cafa4a60",
+        "chatSessionId": "sess_78f66536-2335-459d-b6cc-426c2ef0b9da",
+        "timestamp": 1788527070485
+      },
+      {
+        "executionId": "2b50fb63-55e4-427c-afa7-9a39cafa4a60",
+        "chatSessionId": "sess_78f66536-2335-459d-b6cc-426c2ef0b9da",
+        "timestamp": 1788527124315
+      }
+    ],
+    "7.2 Implement `TodoListWidget.addTask(title)`, `TodoListWidget.editTask(id, title)`, `TodoListWidget.toggleTask(id)`, and `TodoListWidget.deleteTask(id)`": [
+      {
+        "executionId": "c3e6a798-dbfe-449b-8b6e-90c9d750eeb0",
+        "chatSessionId": "sess_9ae0b033-6bd2-480a-9327-54e9e34191a0",
+        "timestamp": 1788527153101
+      },
+      {
+        "executionId": "c3e6a798-dbfe-449b-8b6e-90c9d750eeb0",
+        "chatSessionId": "sess_9ae0b033-6bd2-480a-9327-54e9e34191a0",
+        "timestamp": 1788527211785
+      }
+    ],
+    "7. Implement `TodoListWidget`": [
+      {
+        "executionId": "c3e6a798-dbfe-449b-8b6e-90c9d750eeb0",
+        "chatSessionId": "sess_9ae0b033-6bd2-480a-9327-54e9e34191a0",
+        "timestamp": 1788527211846
+      }
+    ],
+    "8. Implement `QuickLinksWidget`": [
+      {
+        "executionId": "9afa2471-ae42-45b8-a683-925f56bffbad",
+        "chatSessionId": "sess_c967b63e-925f-4b72-89dd-4280c85bb258",
+        "timestamp": 1788527244616
+      },
+      {
+        "executionId": "9afa2471-ae42-45b8-a683-925f56bffbad",
+        "chatSessionId": "sess_c967b63e-925f-4b72-89dd-4280c85bb258",
+        "timestamp": 1788527248454
+      }
+    ],
+    "8.2 Implement `QuickLinksWidget.addLink(label, url)` and `QuickLinksWidget.deleteLink(id)`": [
+      {
+        "executionId": "77ca66b1-d849-44aa-af80-16075756735a",
+        "chatSessionId": "sess_b73a3e9f-bc1b-439b-99a0-87855d6fe003",
+        "timestamp": 1788527281688
+      },
+      {
+        "executionId": "77ca66b1-d849-44aa-af80-16075756735a",
+        "chatSessionId": "sess_b73a3e9f-bc1b-439b-99a0-87855d6fe003",
+        "timestamp": 1788527320553
+      }
+    ],
+    "9. Checkpoint — TodoListWidget and QuickLinksWidget": [
+      {
+        "executionId": "c39cd917-97b5-4b14-8b6f-23e724159c93",
+        "chatSessionId": "sess_2fd1fbd9-46ef-44b6-a0e9-c75c3fef3b36",
+        "timestamp": 1788527358727
+      },
+      {
+        "executionId": "c39cd917-97b5-4b14-8b6f-23e724159c93",
+        "chatSessionId": "sess_2fd1fbd9-46ef-44b6-a0e9-c75c3fef3b36",
+        "timestamp": 1788527710219
+      }
+    ],
+    "10. Wire all widgets and polish": [
+      {
+        "executionId": "4cb050c6-c4e1-4902-8f79-c11a0ddbf22b",
+        "chatSessionId": "sess_38592722-9173-438c-a480-61c6b13f9292",
+        "timestamp": 1788527740135
+      },
+      {
+        "executionId": "4cb050c6-c4e1-4902-8f79-c11a0ddbf22b",
+        "chatSessionId": "sess_38592722-9173-438c-a480-61c6b13f9292",
+        "timestamp": 1788527825247
+      }
+    ],
+    "10.2 Audit accessibility of all interactive controls": [
+      {
+        "executionId": "d57777bf-89e7-48cc-8bf7-668f3a697041",
+        "chatSessionId": "sess_ee39bd64-91e6-4f7c-8495-1be7c533939b",
+        "timestamp": 1788527854837
+      },
+      {
+        "executionId": "d57777bf-89e7-48cc-8bf7-668f3a697041",
+        "chatSessionId": "sess_ee39bd64-91e6-4f7c-8495-1be7c533939b",
+        "timestamp": 1788527960205
+      }
+    ],
+    "10.3 Verify `file://` compatibility and no external network requests": [
+      {
+        "executionId": "f1357974-1ede-44c2-b79b-980a45064b6b",
+        "chatSessionId": "sess_8afb6d3e-ac9e-42d3-8b50-53f769786686",
+        "timestamp": 1788528276518
+      },
+      {
+        "executionId": "f1357974-1ede-44c2-b79b-980a45064b6b",
+        "chatSessionId": "sess_8afb6d3e-ac9e-42d3-8b50-53f769786686",
+        "timestamp": 1788528319487
+      }
+    ],
+    "11. Final checkpoint — full application": [
+      {
+        "executionId": "f93fc509-bc4d-4a36-aff7-2295d59a2ed2",
+        "chatSessionId": "sess_fe909f60-8659-4562-bc7e-10c68d1679c0",
+        "timestamp": 1788528383508
+      }
+    ]
+  }
+}
